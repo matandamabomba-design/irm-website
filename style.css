@@ -1,0 +1,1756 @@
+:root {
+    --primary-bg: #1a1c23;
+    --text-main: #f8f8fa;
+    --brand-blue: #0b2545;
+    --brand-hover: #134074;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--primary-bg);
+    color: var(--text-main);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Global Heading Overrides to banish Times New Roman permanently */
+h1, h2, h3, h4, a {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* ==========================================
+   WHITE NAVIGATION MODULE
+   ========================================== */
+nav {
+    nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    
+    margin: 0;
+    padding: 14px 48px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+}
+
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-logo {
+    height: 45px;
+    width: auto;
+}
+/* ==========================================================================
+   FIXE UNIQUE POUR LA BARRE DE NAVIGATION (TAILLE, LARGEUR & HAUTEUR)
+   ========================================================================== */
+
+nav {
+    display: flex;
+    justify-content: space-between; /* Aligne le logo à gauche, les liens à droite */
+    align-items: center;           /* Centre parfaitement tous les éléments à la verticale */
+    
+    /* Étape 1 : On harmonise la LARGEUR globale sur les deux pages */
+    width: 100%;
+    max-width: 1200px;             /* Empêche l'étirement infini sur les grands écrans */
+    margin: 0 auto;                /* Centre horizontalement la barre entière dans la page */
+    
+    /* Étape 2 : On contrôle la HAUTEUR via un padding fixe */
+    padding: 15px 24px;            
+    box-sizing: border-box;
+    background-color: #dce3ef;     /* Assurez-vous que le fond est identique partout */
+}
+
+/* Étape 3 : On dompte la taille du LOGO pour éviter une barre trop haute */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;                /* Interdit au logo de se déformer ou rétrécir */
+}
+
+.logo-container .logo {
+    width: auto !important;        /* Écrase les attributs HTML 100px */
+    height: 50px !important;       /* Fixe une hauteur de logo standard et élégante */
+    object-fit: contain;
+}
+
+.logo-text {
+    font-size: 1.1rem;
+    font-weight: 700;
+    white-space: nowrap;           /* Évite que le texte du ministère ne passe à la ligne */
+}
+
+/* Étape 4 : On gère la LONGUEUR et l'espacement du bloc de liens */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;                     /* Crée un espace rigoureusement identique entre chaque menu */
+    flex-wrap: nowrap;             /* Interdiction stricte de sauter à la ligne */
+}
+
+.nav-links a {
+    font-size: 0.95rem;
+    text-decoration: none;
+    white-space: nowrap;           /* Force le texte (anglais ou français) à rester droit */
+}
+
+.logo-text {
+    color: #1a1c23;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--brand-blue);
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: var(--brand-hover);
+}
+
+/* DROPDOWN MECHANICS */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-trigger i {
+    font-size: 0.75rem;
+    margin-left: 4px;
+    vertical-align: middle;
+}
+
+.dropdown-menu-box {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ffffff;
+    min-width: 190px;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+    padding: 6px 0;
+    z-index: 100;
+    border: 1px solid #e2e8f0;
+    margin-top: 10px;
+}
+
+.dropdown-menu-box a {
+    color: var(--brand-blue) !important;
+    padding: 12px 20px;
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: left;
+}
+
+.dropdown-menu-box a:not(:last-child) {
+    border-bottom: 1px solid #f0f4f8;
+}
+
+.dropdown-menu-box a:hover {
+    background-color: #f7f9fa;
+    color: var(--brand-hover) !important;
+}
+
+.dropdown:hover .dropdown-menu-box {
+    display: block;
+}
+
+/* ==========================================
+   HERO CANVAS (WITH SYSTEM WATERMARK)
+   ========================================== */
+.hero-container {
+    background-color: var(--primary-bg);
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Safe Background Watermark Placement */
+.hero-container::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 65%;
+    height: 65%;
+    background-image: url("IRM.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.hero-wrapper {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+    z-index: 5;
+}
+
+.hero-left, .hero-right {
+    flex: 1;
+}
+
+/* FIXED THE MASSIVE LOGO BLEEDING ISSUE */
+.image-frame {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 50%; /* Keeps your circular seal looking neat */
+    overflow: hidden;
+}
+
+.hero-featured-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.hero-right {
+    text-align: left;
+}
+
+.hero-tagline {
+    color: #4facfe;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 25px;
+    color: #ffffff;
+}
+
+.hero-description {
+    color: #a0aec0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 35px;
+}
+
+.whatsapp-btn {
+    display: inline-block;
+    background-color: #25d366;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 30px;
+    font-weight: 700;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.whatsapp-btn:hover {
+    background-color: #128c7e;
+    transform: translateY(-2px);
+}
+
+/* ==========================================
+   VALUES STRIP MODULE
+   ========================================== */
+.values-strip {
+    background-color: #f7f9fa;
+    padding: 50px 40px;
+    border-bottom: 1px solid #e2e8f0;
+    position: relative;
+    z-index: 5;
+}
+
+.values-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.values-label {
+    color: #1a1c23;
+    font-size: 1.8rem;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.values-grid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.value-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1a1c23;
+}
+
+.value-card i {
+    color: var(--brand-blue);
+    font-size: 1.3rem;
+}
+
+/* ==========================================
+   HISTORY OVERLAY STRIP
+   ========================================== */
+.history-banner {
+    position: relative;
+    background-color: #11141a;
+    padding: 90px 20px;
+    text-align: center;
+}
+
+.history-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.history-heading {
+    color: #ffffff;
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+.history-paragraph {
+    color: #cbd5e0;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 35px;
+}
+
+.pill-btn-light {
+    display: inline-block;
+    background-color: #ffffff;
+    color: #1a1c23;
+    text-decoration: none;
+    padding: 14px 36px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.pill-btn-light:hover {
+    background-color: #e2e8f0;
+    transform: translateY(-2px);
+}
+
+/* ==========================================
+   EXTENSIONS STRIP MODULE
+   ========================================== */
+.extensions-block {
+    background-color: #ffffff;
+    padding: 90px 20px;
+    text-align: center;
+}
+
+.extensions-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.extensions-heading {
+    color: #000000;
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+}
+
+.extensions-paragraph {
+    color: #4a5568;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 35px;
+}
+
+.pill-btn-dark {
+    display: inline-block;
+    background-color: #1a1c23;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 14px 36px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.pill-btn-dark:hover {
+    background-color: var(--brand-blue);
+    transform: translateY(-2px);
+}
+
+/* ==========================================
+   CLEAN FOOTER SYSTEM
+   ========================================== */
+.main-footer {
+    background-color: #11141a;
+    padding: 30px 20px;
+    text-align: center;
+    border-top: 1px solid #2d3748;
+}
+
+.main-footer p {
+    color: #718096;
+    font-size: 0.9rem;
+}
+
+/* ==========================================
+   MOBILE DESIGN ENGINE
+   ========================================== */
+@media (max-width: 968px) {
+    .hero-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-right {
+        text-align: center;
+    }
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    .values-wrapper {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .values-grid {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .history-heading, .extensions-heading {
+        font-size: 2.2rem;
+    }
+}
+/* ==========================================
+   VALUES STRIP STYLING (image_85414b.jpg)
+   ========================================== */
+.values-strip {
+    background-color: #f7f9fa; /* Elegant off-white background strip */
+    padding: 60px 40px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.values-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 80px;
+}
+
+.values-label {
+    font-family: system-ui, -apple-system, sans-serif;
+    color: #1a1c23;
+    font-size: 1.8rem;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.values-grid {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    width: 100%;
+}
+
+.value-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #1a1c23;
+}
+
+.value-card i {
+    color: #0b2545; /* Brand Navy Blue icon color instead of the purple template */
+    font-size: 1.4rem;
+}
+
+/* ==========================================
+   HISTORY SECTION STYLING (image_853e43.jpg)
+   ========================================== */
+.history-banner {
+    position: relative;
+    background-color: #1a1c23; /* Keeps your rich dark theme base canvas */
+    /* Add your preferred background image pattern here later if desired */
+    background-size: cover;
+    background-position: center;
+    padding: 100px 20px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.history-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(11, 37, 69, 0.2); /* Deep navy subtle layer */
+    z-index: 1;
+}
+
+.history-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.history-heading {
+    font-family: system-ui, -apple-system, sans-serif;
+    color: #ffffff;
+    font-size: 3.2rem;
+    font-weight: 900;
+    margin-bottom: 25px;
+    letter-spacing: -1px;
+}
+
+.history-paragraph {
+    font-family: system-ui, -apple-system, sans-serif;
+    color: #e2e8f0;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin-bottom: 35px;
+}
+
+/* The Premium White Rounded Pill Button */
+.pill-btn-light {
+    display: inline-block;
+    background-color: #ffffff;
+    color: #1a1c23;
+    text-decoration: none;
+    padding: 14px 36px;
+    border-radius: 30px;
+    font-family: system-ui, -apple-system, sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.pill-btn-light:hover {
+    background-color: #f7f9fa;
+    transform: translateY(-2px);
+}
+
+/* ==========================================
+   EXTENSIONS BLOCK STYLING (image_853e1e.png)
+   ========================================== */
+.extensions-block {
+    background-color: #ffffff; /* Bright canvas container */
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.extensions-container {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.extensions-heading {
+    font-family: system-ui, -apple-system, sans-serif;
+    color: #000000;
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+    margin-bottom: 25px;
+}
+
+.extensions-paragraph {
+    font-family: system-ui, -apple-system, sans-serif;
+    color: #4a5568;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin-bottom: 40px;
+}
+
+/* The Rich Dark Pill Button */
+.pill-btn-dark {
+    display: inline-block;
+    background-color: #1a1c23; /* Dark background to draw the eye's focus */
+    color: #ffffff;
+    text-decoration: none;
+    padding: 14px 36px;
+    border-radius: 30px;
+    font-family: system-ui, -apple-system, sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.pill-btn-dark:hover {
+    background-color: #0b2545; /* Shifts towards your primary branding blue */
+    transform: translateY(-2px);
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN SYSTEM
+   ========================================== */
+@media (max-width: 968px) {
+    .values-wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        text-align: center;
+    }
+    .values-grid {
+        flex-direction: column;
+        gap: 25px;
+    }
+    .history-heading, .extensions-heading {
+        font-size: 2.2rem;
+    }
+}
+/* ==========================================
+   PREMIUM COLUMN FOOTER ENGINE
+   ========================================== */
+.main-footer {
+    background-color: #11141a; /* Rich dark canvas matching image_79eb9d.jpg */
+    padding: 70px 20px 20px 20px;
+    border-top: 1px solid #222733;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr; /* Gives the brand description extra breathing room */
+    gap: 50px;
+    padding-bottom: 50px;
+}
+
+/* Brand Grid Configurations */
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.footer-logo-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.footer-logo {
+    height: 50px;
+    width: auto;
+}
+
+.footer-logo-text {
+    color: #ffffff;
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.footer-description {
+    color: #a0aec0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 420px;
+}
+
+/* Structural Menu Columns */
+.footer-links-col {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Bold Uppercase Headings matching the reference style */
+.footer-heading {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 22px;
+    position: relative;
+}
+
+.footer-links-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-links-col ul li a {
+    color: #cbd5e0;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s ease;
+}
+
+.footer-links-col ul li a i {
+    font-size: 0.9rem;
+    color: #4facfe; /* Subtle dynamic color accent for network anchors */
+}
+
+.footer-links-col ul li a:hover {
+    color: #ffffff;
+}
+
+/* High Contrast Social Media Strip */
+.footer-socials {
+    display: flex;
+    gap: 16px;
+    margin-top: 10px;
+}
+
+.footer-socials a {
+    color: #ffffff;
+    background-color: #1e2330;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.footer-socials a:hover {
+    background-color: #4facfe;
+    transform: translateY(-3px);
+}
+
+/* WhatsApp Highlight Alert */
+.footer-whatsapp-link {
+    color: #25d366 !important;
+    font-weight: 700;
+}
+
+/* Bottom Strip Separator Line */
+.footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 25px;
+    border-top: 1px solid #222733;
+    text-align: center;
+}
+
+.footer-bottom p {
+    color: #718096;
+    font-size: 0.85rem;
+}
+
+/* Responsive Adaptive Viewport Breakpoint */
+@media (max-width: 868px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+    .footer-brand {
+        align-items: center;
+        text-align: center;
+    }
+    .footer-description {
+        max-width: 100%;
+    }
+}
+.main-content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px 90px 20px;
+    font-family: system-ui, -apple-system, sans-serif;
+    color: #e2e8f0;
+}
+
+/* Elegant Typography Headers */
+.page-header {
+    font-size: 2.8rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.page-subtitle {
+    font-size: 1.1rem;
+    color: #a0aec0;
+    line-height: 1.6;
+    max-width: 800px;
+    margin-bottom: 40px;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 40px 0 20px 0;
+    border-bottom: 2px solid #222733;
+    padding-bottom: 10px;
+}
+
+/* Modern Content Grid Cards (For Calendar & Locations) */
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.info-card {
+    background-color: #1a1f2c;
+    border: 1px solid #2d3748;
+    border-radius: 12px;
+    padding: 25px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-4px);
+    border-color: #4facfe;
+}
+
+.info-card h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.info-card .time-badge {
+    display: inline-block;
+    background-color: rgba(79, 172, 254, 0.15);
+    color: #4facfe;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.info-card p {
+    color: #cbd5e0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* High-Premium Form System (For Contact Page) */
+.modern-form-container {
+    max-width: 650px;
+    background-color: #1a1f2c;
+    border: 1px solid #2d3748;
+    padding: 40px;
+    border-radius: 16px;
+    margin-top: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #cbd5e0;
+}
+
+.form-group input, 
+.form-group textarea {
+    background-color: #0f131a;
+    border: 1px solid #2d3748;
+    padding: 14px;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+}
+
+.form-group input:focus, 
+.form-group textarea:focus {
+    outline: none;
+    border-color: #4facfe;
+}
+
+.submit-form-btn {
+    background: linear-gradient(135deg, #0072ff 0%, #00c6ff 100%);
+    color: #ffffff;
+    border: none;
+    padding: 14px 28px;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.submit-form-btn:hover {
+    opacity: 0.9;
+}
+.submit-btn {
+    background-color: #0072ff;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+    box-shadow: #000000;
+}
+.contact-sidebar {
+    text-decoration: solid;
+    font-family: 'Courier New', Courier, monospace;
+    color: #00c6ff;
+    text-size-adjust: var(--brand-hover);
+}
+/* ==========================================
+   ADVANCED INTERACTIVE DONATION COMPONENTS
+   ========================================== */
+
+/* Split Box Component (image_c0b9dd.png) */
+.donation-split-block {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    background: linear-gradient(135deg, #161b26 0%, #1a202c 100%);
+    border: 1px solid #2d3748;
+    border-radius: 16px;
+    padding: 40px;
+    margin: 40px 0;
+}
+
+@media (min-width: 992px) {
+    .donation-split-block {
+        flex-direction: row;
+    }
+    .donation-split-left, .donation-split-right {
+        flex: 1;
+    }
+}
+
+.donation-split-left {
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.donation-split-left h2 {
+    font-size: 1.8rem;
+    color: #ffffff;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.donation-split-left p {
+    color: #cbd5e0;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+/* Frequency Filter Tabs */
+.frequency-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    background: #0f131a;
+    padding: 6px;
+    border-radius: 8px;
+    border: 1px solid #2d3748;
+}
+
+.freq-btn {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #a0aec0;
+    padding: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.freq-btn.active {
+    background-color: #0072ff;
+    color: #ffffff;
+}
+
+/* Preset Matrix Grid */
+.preset-matrix {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.matrix-btn {
+    background: #0f131a;
+    border: 1px solid #2d3748;
+    color: #ffffff;
+    padding: 16px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.matrix-btn:hover {
+    border-color: #0072ff;
+    background: rgba(0, 114, 255, 0.05);
+}
+
+/* Channel Module System (image_c0ba1d.jpg) */
+.payment-channel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.channel-card {
+    border-radius: 16px;
+    padding: 35px;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 260px;
+}
+
+.channel-card.paypal { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); }
+.channel-card.bank   { background: linear-gradient(135deg, #b21f1f 0%, #fa1414 100%); }
+.channel-card.orange { background: linear-gradient(135deg, #f15a24 0%, #ff8c00 100%); }
+.channel-card.mobile { background: linear-gradient(135deg, #0d131a 0%, #1e293b 100%); border: 1px solid #334155; }
+
+.channel-card h3 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    letter-spacing: -0.5px;
+}
+
+.channel-details {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    opacity: 0.95;
+}
+
+.channel-details p { margin-bottom: 8px; }
+
+.channel-action-btn {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    text-align: center;
+    padding: 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    backdrop-filter: blur(4px);
+    transition: background 0.2s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.channel-action-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* Remittance Strip */
+.remittance-container {
+    background: #1a1f2c;
+    border: 1px solid #2d3748;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.remittance-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 15px;
+}
+
+.remittance-logo {
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: #a0aec0;
+    letter-spacing: 1px;
+}
+/* ==========================================
+   UNIFIED PROGRAM DISPLAY SYSTEM (Dark Theme)
+   ========================================== */
+.programs-unified-wrapper {
+    background: transparent; /* Lets global body background show through uniformly */
+    padding: 20px 0;
+    margin: 30px 0;
+    color: #ffffff;
+}
+
+/* Split Heading Layout */
+.programs-split-header {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-bottom: 50px;
+    border-bottom: 1px solid #2d3748; /* Standard theme border color */
+    padding-bottom: 35px;
+}
+
+@media (min-width: 768px) {
+    .programs-split-header {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    .programs-left-title {
+        flex: 1;
+    }
+    .programs-right-desc {
+        flex: 1.5;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #cbd5e0; /* Matches subpage description text */
+        margin: 0;
+    }
+}
+
+.programs-left-title h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin: 0;
+    color: #ffffff;
+}
+
+/* Subsection Text dividers */
+.programs-grid-heading {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #4facfe; /* Global Unified Blue Accent */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 40px 0 20px 0;
+}
+
+/* Card Presentation Framework */
+.programs-matrix-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.program-pillar-card {
+    background: #1a1f2c; /* Exact match to your .info-card & form backgrounds */
+    border: 1px solid #2d3748; /* Exact match to global card borders */
+    border-radius: 16px;
+    padding: 40px 25px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.program-pillar-card:hover {
+    transform: translateY(-5px);
+    border-color: #4facfe; /* Blue glow signature on hover */
+    box-shadow: 0 12px 30px rgba(79, 172, 254, 0.15);
+}
+
+/* Rounded Graphical Badges */
+.program-round-badge {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    margin-bottom: 25px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Adjusted Badge Colors for the Unified Theme Palette */
+.badge-combat   { background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%); border: 3px solid #3b82f6; color: #93c5fd; }
+.badge-school   { background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%); border: 3px solid #2dd4bf; color: #ffffff; font-size: 0.8rem; padding: 10px; line-height: 1.3; }
+.badge-vvf      { background: linear-gradient(135deg, #1e3a8a 0%, #172554 100%); border: 3px solid #38bdf8; color: #38bdf8; font-size: 1.2rem; font-weight: 800; letter-spacing: 0.5px; }
+.badge-worship  { background: linear-gradient(135deg, #b45309 0%, #78350f 100%); border: 3px solid #fbbf24; color: #fbbf24; }
+
+/* Typography inside Cards */
+.program-pillar-card h3 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 10px 0;
+    line-height: 1.4;
+}
+
+.program-pillar-card .card-time-tag {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #4facfe; /* Clear Blue text highlight */
+    background: rgba(79, 172, 254, 0.1);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(79, 172, 254, 0.2);
+}
+
+.program-pillar-card p {
+    font-size: 0.95rem;
+    color: #cbd5e0;
+    line-height: 1.6;
+    margin: 0;
+}
+/* ==========================================
+   EDITORIAL SUBPAGE DESIGN SYSTEM 
+   ========================================== */
+
+/* Section 1: Core Pillars Bar (Ref: image_c13998.png) */
+.about-pillars-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+    background: #1a1f2c;
+    border: 1px solid #2d3748;
+    border-radius: 12px;
+    padding: 25px;
+    margin: 30px 0 50px 0;
+}
+
+.pillar-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.pillar-item i {
+    color: #4facfe; /* Unified Blue Accent */
+    font-size: 1.3rem;
+}
+
+/* Section 2: Overlapping Collage Split (Ref: image_c139bb.jpg) */
+.collage-split-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+@media (min-width: 992px) {
+    .collage-split-container {
+        flex-direction: row;
+        align-items: center;
+    }
+    .collage-left-visual, .collage-right-text {
+        flex: 1;
+    }
+}
+
+/* Asymmetric Image Collage Placeholder */
+.collage-left-visual {
+    position: relative;
+    height: 380px;
+    margin-bottom: 20px;
+}
+
+.placeholder-photo-frame {
+    position: absolute;
+    background: #1a1f2c;
+    border: 1px solid #2d3748;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4a5568;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* Recreating the offset stack rotation effect from image_c139bb.jpg */
+.frame-main  { width: 65%; height: 75%; left: 0; top: 10%; transform: rotate(-3deg); z-index: 2; border-color: #4facfe; }
+.frame-stack { width: 55%; height: 65%; right: 5%; top: 0; transform: rotate(4deg); z-index: 1; }
+.frame-base  { width: 50%; height: 60%; right: 15%; bottom: 0; transform: rotate(-1deg); z-index: 3; }
+
+/* Section 3: Focal Banner Showcase (Ref: image_c139f6.jpg) */
+.focal-banner-showcase {
+    position: relative;
+    background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('images/banner-placeholder.jpg') center/cover no-repeat;
+    background-color: #1a1f2c; /* Fallback */
+    border: 1px solid #2d3748;
+    border-radius: 16px;
+    padding: 60px 30px;
+    margin-bottom: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 320px;
+}
+
+.focal-glass-card {
+    background: rgba(26, 31, 44, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(79, 172, 254, 0.2);
+    border-radius: 12px;
+    padding: 40px;
+    max-width: 800px;
+}
+
+/* Section 4: Split Profile Component (Ref: image_c13a33.jpg) */
+.profile-split-card {
+    display: flex;
+    flex-direction: column;
+    background: #1a1f2c;
+    border: 1px solid #2d3748;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+
+@media (min-width: 768px) {
+    .profile-split-card {
+        flex-direction: row;
+    }
+    .profile-aside-image {
+        width: 40%;
+        min-height: 350px;
+    }
+    .profile-main-body {
+        width: 60%;
+    }
+}
+
+.profile-aside-image {
+    background: linear-gradient(135deg, #2d3748 0%, #1a1f2c 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4a5568;
+    font-weight: 600;
+    border-right: 1px solid #2d3748;
+    position: relative;
+}
+
+.profile-main-body {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profile-badge-btn {
+    display: inline-block;
+    align-self: flex-start;
+    background: #2d3748;
+    color: #ffffff;
+    padding: 10px 24px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-top: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background 0.2s ease;
+}
+
+.profile-badge-btn:hover {
+    background: #3a4a63;
+    color: #4facfe;
+}
+/* ==========================================
+   VISIONARY PROFILE HERO (Ref: image_c14559.jpg)
+   ========================================== */
+.visionary-profile-section {
+    display: flex;
+    flex-direction: column;
+    background: #1a1f2c; /* Matches global card background */
+    border: 1px solid #2d3748; /* Standard theme border */
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 50px 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 992px) {
+    .visionary-profile-section {
+        flex-direction: row;
+    }
+    .visionary-photo-side {
+        width: 45%;
+        min-height: 480px;
+    }
+    .visionary-text-side {
+        width: 55%;
+    }
+}
+
+/* Photo Container with Nameplate Overlay */
+.visionary-photo-side {
+    position: relative;
+    background: linear-gradient(135deg, #232a38 0%, #11151d 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4a5568;
+    font-weight: 600;
+    border-bottom: 1px solid #2d3748;
+}
+
+@media (min-width: 992px) {
+    .visionary-photo-side {
+        border-bottom: none;
+        border-right: 1px solid #2d3748;
+    }
+}
+
+.visionary-photo-side img {
+    display: flex;
+    background-color: #a0bce3;
+    border-radius: 16px;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Floating Name Tag Box */
+.visionary-name-tag {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #4facfe; /* Unified Blue Accent replacing the source's purple */
+    color: #0f1319;
+    padding: 20px 35px;
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    min-width: 220px;
+    box-shadow: -5px -5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Text & Content Layout Side */
+.visionary-text-side {
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.visionary-text-side h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.2;
+    margin: 0 0 25px 0;
+    letter-spacing: -1px;
+}
+
+.visionary-text-side p {
+    font-size: 1.05rem;
+    color: #cbd5e0;
+    line-height: 1.7;
+    margin: 0 0 30px 0;
+}
+/* Pill Action Button */
+.visionary-pill-btn {
+    display: inline-block;
+    align-self: flex-start;
+    background: #0f1319;
+    color: #ffffff;
+    border: 1px solid #2d3748;
+    padding: 14px 35px;
+    border-radius: 50px; /* Perfect round pill button */
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+}
+
+.visionary-pill-btn:hover {
+    background: #4facfe;
+    color: #0f1319;
+    border-color: #4facfe;
+    transform: translateY(-2px);
+}
+.lang-toggle {
+    background: #4facfe;
+    color: #10141d !important;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.lang-toggle:hover {
+    background: #00f2fe;
+    transform: translateY(-1px);
+}
+
+/* ==========================================
+   MOBILE HAMBURGER MENU
+   ========================================== */
+.hamburger-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--brand-blue);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+  z-index: 200;
+}
+
+.hamburger-btn:hover {
+  background: rgba(11, 37, 69, 0.08);
+}
+
+@media (max-width: 900px) {
+  .hamburger-btn {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px 24px;
+    gap: 6px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    z-index: 999;
+    border-top: 2px solid #e2e8f0;
+  }
+
+  .nav-links.nav-open {
+    display: flex;
+  }
+
+  .nav-links a {
+    width: 100%;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f4f8;
+  }
+
+  .dropdown-menu-box {
+    position: static;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    padding: 0 0 0 16px;
+    margin-top: 4px;
+    display: block;
+  }
+
+  .lang-toggle {
+    margin-top: 8px;
+  }
+}
+
+/* ==========================================
+   MATRIX BUTTON SELECTED STATE
+   ========================================== */
+.matrix-btn.selected {
+  border-color: #0072ff;
+  background: rgba(0, 114, 255, 0.15);
+  color: #4facfe;
+}
+
+/* ==========================================
+   TIME BADGE GLOBAL
+   ========================================== */
+.time-badge {
+  display: inline-block;
+  background: rgba(79, 172, 254, 0.15);
+  color: #4facfe;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* ==========================================
+   PROGRAMS PURPLE WRAPPER ALIAS
+   ========================================== */
+.programs-purple-wrapper {
+  background: transparent;
+  padding: 20px 0;
+  margin: 30px 0;
+  color: #ffffff;
+}
+
+/* ==========================================
+   RESPONSIVE FIXES
+   ========================================== */
+@media (max-width: 768px) {
+  .page-header {
+    font-size: 2rem;
+  }
+
+  .donation-split-block {
+    padding: 24px;
+  }
+
+  .payment-channel-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .programs-matrix-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-title {
+    font-size: 2.2rem;
+  }
+
+  .main-content-wrapper {
+    padding: 40px 16px 60px;
+  }
+}
+/* Prayer Mandate Layout Core styling */
+.prayer-intro-quote {
+    background: #161b22;
+    border-left: 4px solid #4facfe;
+    padding: 30px;
+    border-radius: 0 16px 16px 0;
+    max-width: 850px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.prayer-pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.prayer-pillar-card {
+    background: #161b22;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 30px;
+    position: relative;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.prayer-pillar-card:hover {
+    transform: translateY(-5px);
+    border-color: #4facfe;
+}
+
+.prayer-pillar-card h3 {
+    font-size: 1.3rem;
+    color: #ffffff;
+    margin: 15px 0 10px 0;
+}
+
+.prayer-pillar-card p {
+    color: #a0aec0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.pillar-number {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: rgba(79, 172, 254, 0.1);
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    line-height: 1;
+}
+
+.scripture-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    color: #4facfe;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}

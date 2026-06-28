@@ -11,26 +11,28 @@
 </head>
 <body>
     <nav>
-        <div class="logo-container">
-            <img src="IRM.png" alt="IRM Logo" class="logo" width="100px" height="100px"/>
-            <span class="logo-text">International Rescue Ministry</span>
+    <div class="logo-container">
+        <img src="IRM.png" alt="IRM Logo" class="logo" width="100px" height="100px"/>
+        <span class="logo-text">International Rescue Ministry</span>
+    </div>
+    
+    <div class="nav-links">
+        <a href="index.html" class="active">Home</a>   
+        <a href="Programmes.html">Programmes</a>
+        <a href="About.html" class="dropdown-trigger">About Us<i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown-menu-box">
+            <a href="#">Our History</a>
+            <a href="#">Our Extensions</a>
+            <a href="#">Our Departments</a>
         </div>
-        <div class="nav-links">
-            <a href="index.html" class="active">Home</a>
-            <a href="Programmes.html">Programmes</a>
-            <div class="dropdown">    
-            <a href="About.html" class="dropdown-trigger">About Us<i class="fas fa-chevron-down"></i></a>
-            <div class="dropdown-menu-box">
-                <a href="About.html">Our History</a>
-                <a href="About.html">Our Extensions</a>
-                <a href="#">Our Departments</a>
-            </div>
-        </div>
-            <a href="Donate.html">Donate</a>
-            <a href="Contact.html">Contact</a>
-            <a href="index-fr.html" class="lang-toggle">FR</a>
-        </div>
-    </nav>
+        <a href="Donate.html">Donate</a>
+        <a href="Contact.html">Contact</a>
+        <a href="index-fr.html" class="lang-toggle">FR</a>
+    </div>
+
+    <!-- 🎯 PLACE THE CODE HERE (Right after the nav-links div ends) -->
+    <i class="fas fa-bars" id="menu-toggle"></i>
+</nav>
     
     <!--HERO SPLIT-SCREEN SECTION-->
    <section class="hero-container">
